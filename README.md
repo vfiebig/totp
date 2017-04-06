@@ -1,6 +1,9 @@
 # totp
 Simple GO TOTP compatible with Google Authenticator
 
+https://godoc.org/github.com/vfiebig/totp
+
+
 ## usage
 ```go
 package main
