@@ -1,5 +1,5 @@
 # totp
-Simple GO TOTP compatible with Google Authenticator
+Simple GO TOTP compatible with Google Authenticator, based on https://www.ietf.org/rfc/rfc4226.txt
 
 https://godoc.org/github.com/vfiebig/totp
 
