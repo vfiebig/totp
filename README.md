@@ -1,5 +1,5 @@
 # totp
-Simple GO TOTP
+Simple GO TOTP compatible with Google Authenticator
 
 ## usage
 ```go
