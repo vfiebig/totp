@@ -7,8 +7,6 @@ package main
 
 import (
 	"encoding/base32"
-	"fmt"
-
 	"github.com/vfiebig/totp"
 )
 
@@ -17,9 +15,9 @@ func main() {
 	totp.K, _ = base32.StdEncoding.DecodeString("BASE32SECRET")
 
 	if totp.Validate(123456) {
-		fmt.Println("Valid token")
+		// Valid token
 	} else {
-		fmt.Println("Invalid token")
+		// Invalid token
 	}
 }
 
