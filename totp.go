@@ -30,7 +30,7 @@ func (t *TOTP) Validate(code uint64) (map[uint64]uint64, bool) {
 
     try_num := -(t.WindowSize-1)/2 + count
 
-    timestamp := time.Now().Unix() + int64(try_num)
+    timestamp := time.Now().Unix() + (int64(t.Window)*int64(try_num))
 
 	//Verify reuse case based on stored timestamps.
 	// clock := uint64(time.Now().Unix() / t.Window)
