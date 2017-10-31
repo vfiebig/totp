@@ -14,13 +14,13 @@ import (
 )
 
 func main() {
-	totp := totp.StdTOTP
-	totp.K, _ = base32.StdEncoding.DecodeString("BASE32SECRET")
+	totp_inst := totp.StdTOTP
+	totp_inst.K, _ = base32.StdEncoding.DecodeString("BASE32SECRET")
 
-	if totp.Validate(123456) {
+	if _, ok := totp_inst.Validate(123456); ok {
 		// Valid token
 	} else {
-		// Invalid token
+		// Not a valid token
 	}
 }
 
