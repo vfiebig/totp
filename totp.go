@@ -2,6 +2,8 @@ package totp
 
 import (
 	"crypto/hmac"
+	"crypto/sha1"
+	"crypto/sha256"
 	"crypto/sha512"
 	"encoding/binary"
 	"math"
@@ -14,6 +16,7 @@ type TOTP struct {
 	Digit      int
 	Window     uint64
 	WindowSize int
+	Algorithm  string
 }
 
 // Validate check if the code is correct, return true or false and a map with its correspondent timestamp and PIN value.
@@ -33,7 +36,14 @@ func (t *TOTP) Validate(code uint64) (map[uint64]uint64, bool) {
 		C := make([]byte, 8)
 		binary.BigEndian.PutUint64(C, clock)
 
-		mac := hmac.New(sha512.New, t.K)
+		alg := sha1.New
+		switch t.Algorithm {
+		case "SHA256":
+			alg = sha256.New
+		case "SHA512":
+			alg = sha512.New
+		}
+		mac := hmac.New(alg, t.K)
 		mac.Write(C)
 
 		truncate := Truncate(mac.Sum(nil), t.Digit)
@@ -59,4 +69,5 @@ var StdTOTP = TOTP{
 	Window:     30,
 	Digit:      6,
 	WindowSize: 17,
+	Algorithm:  "SHA1",
 }
