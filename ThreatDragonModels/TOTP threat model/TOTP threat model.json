@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "title": "TOTP threat model",
+    "description": "Testing OWASP threat modeling tool"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": []
+  }
+}
